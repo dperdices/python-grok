@@ -81,13 +81,10 @@ class GrokPattern(object):
 
                 self.patterns[key] = value
 
-GrokPattern.load_patterns_from_dir("patterns")
+try:
+    import importlib.resources as pkg_resources
+except ImportError:
+    import importlib_resources as pkg_resources
 
-if __name__ == "__main__":
-    #Grok.load_patterns_from_file("patterns.txt")
-    #Grok.load_patterns_from_dir("patterns")
-    GrokPattern
-    #print(Grok.patterns)
-    r = GrokPattern("%{NUMBER:numero:float}")
-    #print(r.match("1"))
-    print(r.match("1").groupdict())
+with pkg_resources.path("grok", "patterns") as patterns_path:
+    GrokPattern.load_patterns_from_dir(patterns_path)
