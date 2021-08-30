@@ -87,4 +87,4 @@ except ImportError:
     import importlib_resources as pkg_resources
 
 with pkg_resources.path("grok", "patterns") as patterns_path:
-    GrokPattern.load_patterns_from_dir(patterns_path)
+    GrokPattern.load_patterns_from_dir(str(patterns_path))
