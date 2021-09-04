@@ -7,8 +7,8 @@ with open(f"{cwd}/README.md", "r") as f:
     long_desc = f.read()
 
 setup(
-    name="grok",
-    version="0.1.0",
+    name="python-grok",
+    version="0.3.0",
     description="A Python package to use Grok expressions",
     long_description=long_desc,
     long_description_content_type="text/markdown",

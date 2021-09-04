@@ -17,7 +17,22 @@ correct_examples = [
     ("%{NUMBER}", "-11"),
     ("%{NUMBER}", "11.0"),
     ("%{NUMBER}", "-22.0"),
-    ("%{NUMBER}", "+22.0")
+    ("%{NUMBER}", "+22.0"),
+    ("%{IPV4}", "1.1.1.1"),
+    ("%{IP}", "1.1.1.1"),
+    ("%{IPV6}", "::"),
+    ("%{IPV6}", "2001:db8:3333:4444:5555:6666:7777:8888"),
+    ("%{INT}", "+0000"),
+    ("%{MONTHDAY}", "17"),
+    ("%{MONTH}", "May"),
+    (" %{MONTH} ", " May "),
+    ("%{MONTH}", "Jan"),
+    ("%{YEAR}", "2015"),
+    ("%{TIME}", "10:05:03"),
+    ("%{HTTPDATE}", "17/May/2015:10:05:03 +0000"),
+    ("%{MONTHDAY}/%{YEAR}", "17/2015"),
+    ("%{MONTH}/%{YEAR}", "May/2015"),
+    ("%{MONTHDAY}/%{MONTH}/%{YEAR}:%{TIME} %{INT}", "17/May/2015:10:05:03 +0000")
 ]
 
 incorrect_examples = [
@@ -68,6 +83,5 @@ for key, val in incorrect_examples:
     counter[key] += 1
     setattr(TestCommonPatterns, f"test_incorrect_match_{key}_{counter[key]}", build_assert_none(key, val))
 
-    
 if __name__ == '__main__':
     unittest.main()
